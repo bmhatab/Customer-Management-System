@@ -129,3 +129,8 @@ def create_interaction(customer_id):
         flash('Interaction created successfully!')
         return redirect(url_for('main.view_customer', customer_id=customer_id))
     return render_template('customers/new_interaction.html',form=form,customer_id=customer_id)
+
+@main.route('/customer-interactions')
+def customer_interactions():
+  customers = Customer.query.all()
+  return render_template('customer_interactions.html', customers=customers)
